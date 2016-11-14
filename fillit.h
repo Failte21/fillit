@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 10:16:58 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/14 14:59:42 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/14 17:41:37 by becorbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ char				*resolve(char *s, t_tetr *tetr);
 void				increase_coords(int min_rect, t_tetr *tetr);
 int					get_min_rect(t_tetr *tetr);
 void				adjust_coords(int min_rect, t_tetr *tetr);
-
+int					check_tetri(char *s, int i);
 #endif

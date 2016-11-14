@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readFile.c                                         :+:      :+:    :+:   */
+/*   check_tetri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: becorbel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 14:43:46 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/14 19:08:26 by becorbel         ###   ########.fr       */
+/*   Created: 2016/11/14 16:51:54 by becorbel          #+#    #+#             */
+/*   Updated: 2016/11/14 19:43:30 by becorbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include "libft.h"
-#include "fillit.h"
 
-int		read_file(char *buff, char *s)
+int	check_tetri(char *s, int i)
 {
-	int	r;
-	int	f;
+	int	j;
+	int	n;
 
-	if (!(f = open(s, O_RDONLY)))
+	while (s[i])
+	{
+		j = 0;
+		while (s[i] != '\n')
+		{
+			if (s[i] != '.' && s[i] != '#')
+				return (0);
+			i++;
+			j++;
+		}
+		n++;
+		if (j != 4)
+			return (0);
+		else
+			i++;
+	}
+	if (n != 4)
 		return (0);
-	while ((r = read(f, buff, BUFF_SIZE)))
-		buff[r] = '\0';
 	return (1);
 }
