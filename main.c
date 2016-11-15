@@ -31,12 +31,11 @@ int		main(int argc, char **argv)
 		return (1);
 	if (!(read_file(buff, argv[1])))
 		return (1);
-	if (!(check_tetri(buff, 0)))
-	{
-		ft_putendl("KO");
+	if (!(check_str(buff, 0)))
 		return (1);
-	}
-		ft_putendl("OK");
+	if (!(check_tetri(s)))
+		return (1);
+	printf("ko");
 	/*if (!(tetr = fill(buff)))
 		return (1);
 	//min_rect = get_min_rect(tetr);

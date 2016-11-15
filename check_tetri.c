@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "fillit.h"
 
 #include <stdio.h>
 
@@ -26,7 +27,7 @@ int	ft_split_fct(char *s, int *i, int *j)
 	return (1);
 }
 
-int	check_tetri(char *s, int i)
+int	check_str(char *s, int i)
 {
 	int	j;
 	int	n;
@@ -45,12 +46,30 @@ int	check_tetri(char *s, int i)
 			if (s[i + 1] != '\n' && s[i + 1] != '\0')
 				return (0);
 			if (s[i + 1] == '\n')
-				if((check_tetri(s, i + 2)) == 1)
+				if((check_str(s, i + 2)) == 1)
 					return (1);
 			if (s[i + 1] == '\0')
 				return (1);
 		}
 		i++;
+	}
+	return (1);
+}
+
+int	check_tetri(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		while (s[i] != '\n' && s[i + 1] != '\n' && s[i])
+		{
+			if (s[i] == '#' && s[i + 1] != '#' && s[i + 5] != '#')
+				return (0);
+			i++;
+		}
+		i += 2;
 	}
 	return (1);
 }

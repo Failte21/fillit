@@ -33,5 +33,6 @@ char				*resolve(char *s, t_tetr *tetr);
 void				increase_coords(int min_rect, t_tetr *tetr);
 int					get_min_rect(t_tetr *tetr);
 void				adjust_coords(int min_rect, t_tetr *tetr);
-int					check_tetri(char *s, int i);
+int					check_str(char *s, int i);
+int					check_tetri(char *s);
 #endif
