@@ -14,6 +14,18 @@
 
 #include <stdio.h>
 
+int	ft_split_fct(char *s, int *i, int *j)
+{
+	while (s[*i] != '\n')
+	{
+		if (s[*i] != '.' && s[*i] != '#')
+			return (0);
+		(*i)++;
+		(*j)++;
+	}
+	return (1);
+}
+
 int	check_tetri(char *s, int i)
 {
 	int	j;
@@ -23,13 +35,8 @@ int	check_tetri(char *s, int i)
 	while (s[i])
 	{
 		j = 0;
-		while (s[i] != '\n')
-		{
-			if (s[i] != '.' && s[i] != '#')
-				return (0);
-			i++;
-			j++;
-		}
+		if (!(ft_split_fct(s, &i, &j)))
+			return (0);
 		n++;
 		if (j != 4)
 			return (0);
