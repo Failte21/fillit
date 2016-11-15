@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 14:46:17 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/15 17:09:56 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/15 18:17:53 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ t_tetr	*fill(char *s)
 			return (NULL);
 	}
 	else
-	{
 		if (!(tetr_pushback(new, array, c)))
 			return (NULL);
-	}
 	return (new);
 }
 
@@ -82,22 +80,11 @@ void	increase_coords(t_tetr *tetr)
 	}
 }
 
-t_tetr	*fill_2(char *s)
+void	adjust_coords(t_tetr *tetr, int iter)
 {
-	t_tetr *new;
-	int		array[4];
-	char	c;
-
-	if (*s == '\0')
+	while (iter > 0)
 	{
-		if (!new)
-		{
-			if (!(new = tetr_new(array, c)))
-				return (NULL);
-		}
-		else
-			if (!(new = tetr_pushback(new, array, c)))
-				return (NULL);
+		increase_coords(tetr);
+		iter--;
 	}
-	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:36:08 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/15 16:42:11 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/15 18:15:09 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		main(int argc, char **argv)
 		return (1);
 	if (!(tetr = fill(buff)))
 		return (1);
-	//min_rect = get_min_rect(tetr);
-	min_rect = 4;
+	min_rect = get_min_rect(tetr);
+	adjust_coords(tetr, min_rect - 4);
 	while (s == NULL)
 	{
 		free(s);
