@@ -6,7 +6,7 @@
 /*   By: becorbel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:54 by becorbel          #+#    #+#             */
-/*   Updated: 2016/11/15 16:05:15 by becorbel         ###   ########.fr       */
+/*   Updated: 2016/11/15 20:51:38 by becorbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,30 @@ int	check_tetri(char *s)
 		i += 2;
 	}
 	return (1);
+}
+
+int	check_nb_piece(char *s, int i)
+{
+	int	j;
+
+	j = 0;
+	while (s[i])
+	{
+		while (s[i] != '\n' && s[i + 1] != '\n')
+		{
+			if (s[i] == '#')
+				j++;
+			i++;
+		}
+		if (j == 4)
+		{
+			if (s[i + 1] == '\n')
+				if (check_nb_piece(s, i + 2) == 1)
+					return (1);
+			if (s[i + 1] == '\0')
+				return (1);
+		}
+		i++;
+	}
+	return (0);
 }

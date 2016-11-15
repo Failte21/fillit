@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:36:08 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/15 14:45:12 by becorbel         ###   ########.fr       */
+/*   Updated: 2016/11/15 20:34:08 by becorbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ int		main(int argc, char **argv)
 		return (1);
 	if (!(check_str(buff, 0)))
 		return (1);
-	if (!(check_tetri(s)))
+	if (!(check_nb_piece(buff, 0)))
+	{
+		printf("KO");
 		return (1);
-	printf("ko");
+	}
+	//if (!(check_tetri(buff)))
+	//	return (1);
+	printf("OK");
 	/*if (!(tetr = fill(buff)))
 		return (1);
 	//min_rect = get_min_rect(tetr);
