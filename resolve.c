@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 07:28:52 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/14 16:00:16 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/15 16:49:12 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*resolve(char *s, t_tetr *tetr)
 	int	i;
 
 	i = 0;
-	while (ft_strlen(&s[i]) >= tetr->coord[3])
+	while (ft_strlen(&s[i]) >= (tetr->coord[3] % 100))
 	{
 		if (place_tetr(&s[i], tetr) == 1)
 		{
