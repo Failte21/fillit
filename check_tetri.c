@@ -6,7 +6,7 @@
 /*   By: becorbel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:54 by becorbel          #+#    #+#             */
-/*   Updated: 2016/11/16 10:52:11 by becorbel         ###   ########.fr       */
+/*   Updated: 2016/11/16 11:20:52 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	check_nb_piece(char *s, int i)
 		}
 		if (j == 4)
 		{
+		ft_putnbr(j);
+		ft_putchar('\n');
 			if (s[i + 1] == '\n')
 				if (check_nb_piece(s, i + 2) == 1)
 					return (1);
@@ -109,10 +111,19 @@ int	all_check(char *s)
 
 	i = 0;
 	if (!(check_str(s, i)))
+	{
+		ft_putendl("checkstr");
 		return (0);
+	}
 	if (!(check_nb_piece(s, i)))
+	{
+		ft_putendl("checknb");
 		return (0);
+	}
 	if (!(check_tetri(s, i)))
+	{
+		ft_putendl("checktetri");
 		return (0);
+	}
 	return (1);
 }
