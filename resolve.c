@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 07:28:52 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/16 16:49:47 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/16 17:18:35 by tfarrugi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,26 @@ char	*resolve(char *s, t_tetr *tetr)
 				return (s);
 			else
 				clean(&s[i], tetr);
+			if (coord_match(tetr->coord, tetr->next->coord) == 1)
+				return (NULL);
 		}
 		i++;
 	}
 	return (NULL);
+}
+
+int		coord_match(int *a1, int *a2)
+{
+	int	i;
+
+	i = 1;
+	while (i < 4)
+	{
+		if (a1[i] != a2[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int		place_tetr(char *s, t_tetr *tetr)
