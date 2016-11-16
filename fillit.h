@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 10:16:58 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/15 18:14:26 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/16 10:58:47 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ typedef struct		s_tetr
 }					t_tetr;
 
 int					read_file(char *buff, char *s);
-t_tetr				*fill(char *s);
-t_tetr				*fill_2(char *s);
+t_tetr				*fill(char *s, char c, t_tetr *new);
+t_tetr				*insert_node(t_tetr *new, int *array, char c);
+void				fill_array(int *array, char *s, int *i, char c);
 t_tetr				*tetr_new(int *array, char c);
 t_tetr				*tetr_pushback(t_tetr *first, int *array, char c);
 char				*create_grid(int min_rect);
