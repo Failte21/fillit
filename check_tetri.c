@@ -6,7 +6,7 @@
 /*   By: becorbel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:54 by becorbel          #+#    #+#             */
-/*   Updated: 2016/11/16 11:20:52 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/16 12:39:09 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,30 @@ int	check_tetri(char *s, int i)
 	return (1);
 }
 
-int	check_nb_piece(char *s, int i)
+int	check_nb_piece(char *s)
 {
 	int	j;
+	int i;
 
+	i = 0;
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] != '\n' && s[i + 1] != '\n')
+		while (i < 19)
 		{
 			if (s[i] == '#')
 				j++;
 			i++;
 		}
+		//ft_putnbr(j);
+		//ft_putchar('\n');
 		if (j == 4)
 		{
-		ft_putnbr(j);
-		ft_putchar('\n');
+			//ft_putendl("OK");
 			if (s[i + 1] == '\n')
-				if (check_nb_piece(s, i + 2) == 1)
+				if (check_nb_piece(&s[i + 2]) == 1)
 					return (1);
-			if (s[i + 1] == '\0')
-				return (1);
+			return (1);
 		}
 		i++;
 	}
@@ -115,7 +117,7 @@ int	all_check(char *s)
 		ft_putendl("checkstr");
 		return (0);
 	}
-	if (!(check_nb_piece(s, i)))
+	if (!(check_nb_piece(s)))
 	{
 		ft_putendl("checknb");
 		return (0);
