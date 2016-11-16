@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 13:34:48 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/14 09:26:25 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/16 17:40:15 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,17 @@ t_tetr	*tetr_pushback(t_tetr *first, int *array, char c)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;
+	return (new);
+}
+
+t_tetr	*insert_node(t_tetr *new, int *array, char c)
+{
+	if (!new)
+	{
+		if (!(new = tetr_new(array, c)))
+			return (NULL);
+	}
+	else if (!(new = tetr_pushback(new, array, c)))
+		return (NULL);
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:36:08 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/16 10:40:05 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/16 17:48:56 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,18 @@ int		main(int argc, char **argv)
 		return (1);
 	if (!(read_file(buff, argv[1])))
 		return (1);
-	if (!(tetr = fill(buff, 'A', tetr)))
+/*	if (all_check(buff) == 0)
+	{
+		ft_putendl("error");
+		return (1);
+	}
+*/	if (!(tetr = fill(buff, 'A', tetr)))
 		return (1);
 	//for (int i =0; i < 4; i++)
 	//	ft_putnbr(tetr->coord[i]);
 	//min_rect = 4;
 	min_rect = get_min_rect(tetr);
-	adjust_coords(tetr, min_rect - 4);
+	adjust_coords(tetr, min_rect);
 	while (s == NULL)
 	{
 		free(s);

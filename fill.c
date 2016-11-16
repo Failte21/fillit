@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 14:46:17 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/16 10:59:26 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/16 17:48:51 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,6 @@ void	fill_array(int *array, char *s, int *i, char c)
 	}
 }
 
-t_tetr	*insert_node(t_tetr *new, int *array, char c)
-{
-	if (!new)
-	{
-		if (!(new = tetr_new(array, c)))
-			return (NULL);
-	}
-	else if (!(new = tetr_pushback(new, array, c)))
-		return (NULL);
-	return (new);
-}
-
 void	increase_coords(t_tetr *tetr)
 {
 	t_tetr *tmp;
@@ -78,11 +66,30 @@ void	increase_coords(t_tetr *tetr)
 	}
 }
 
-void	adjust_coords(t_tetr *tetr, int iter)
+void	decrease_coords(t_tetr *tetr)
 {
-	while (iter > 0)
+	t_tetr *tmp;
+
+	tmp = tetr;
+	while (tmp)
+	{
+		tmp->coord[1] -= tmp->coord[1] / 100;
+		tmp->coord[2] -= tmp->coord[2] / 100;
+		tmp->coord[3] -= tmp->coord[3] / 100;
+		tmp = tmp->next;
+	}
+}
+
+void	adjust_coords(t_tetr *tetr, int min_rect)
+{
+	while (min_rect > 4)
 	{
 		increase_coords(tetr);
-		iter--;
+		min_rect--;
+	}
+	while (min_rect < 4)
+	{
+		decrease_coords(tetr);
+		min_rect++;
 	}
 }

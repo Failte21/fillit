@@ -5,9 +5,9 @@ SRCS =	main.c \
 		read_file.c \
 		tetr_manipulation.c \
 		create_grid.c \
-		place_tetr.c \
 		resolve.c \
 		get_min_rect.c \
+		check_tetri.c \
 		libft.a
 
 OBJS =	main.o \
@@ -16,8 +16,8 @@ OBJS =	main.o \
 		tetr_manipulation.o \
 		create_grid.o \
 		resolve.o \
-		place_tetr.o \
-		get_min_rect.o
+		get_min_rect.o \
+		check_tetri.o 
 
 NAME =	fillit
 
