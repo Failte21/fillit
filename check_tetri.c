@@ -6,7 +6,7 @@
 /*   By: becorbel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:54 by becorbel          #+#    #+#             */
-/*   Updated: 2016/11/15 20:51:38 by becorbel         ###   ########.fr       */
+/*   Updated: 2016/11/16 10:52:11 by becorbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_str(char *s, int i)
 			if (s[i + 1] != '\n' && s[i + 1] != '\0')
 				return (0);
 			if (s[i + 1] == '\n')
-				if((check_str(s, i + 2)) == 1)
+				if ((check_str(s, i + 2)) == 1)
 					return (1);
 			if (s[i + 1] == '\0')
 				return (1);
@@ -56,20 +56,23 @@ int	check_str(char *s, int i)
 	return (1);
 }
 
-int	check_tetri(char *s)
+int	check_tetri(char *s, int i)
 {
-	int	i;
-
-	i = 0;
 	while (s[i])
 	{
 		while (s[i] != '\n' && s[i + 1] != '\n' && s[i])
 		{
-			if (s[i] == '#' && s[i + 1] != '#' && s[i + 5] != '#')
+			if ((s[i] != '#') || ((s[i] == '#') && ((s[i + 1] == '#')
+							|| (i > 0 && (s[i - 1] == '#'))
+							|| (s[i + 5] == '#')
+							|| (i > 6 && (s[i - 5] == '#')))))
+				i++;
+			else
 				return (0);
-			i++;
 		}
-		i += 2;
+		if (check_tetri(s, i + 2) == 0)
+			return (0);
+		i++;
 	}
 	return (1);
 }
@@ -98,4 +101,18 @@ int	check_nb_piece(char *s, int i)
 		i++;
 	}
 	return (0);
+}
+
+int	all_check(char *s)
+{
+	int i;
+
+	i = 0;
+	if (!(check_str(s, i)))
+		return (0);
+	if (!(check_nb_piece(s, i)))
+		return (0);
+	if (!(check_tetri(s, i)))
+		return (0);
+	return (1);
 }
