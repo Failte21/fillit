@@ -15,7 +15,6 @@ OBJS =	main.o \
 		tetr_manipulation.o \
 		create_grid.o \
 		resolve.o \
-		get_min_rect.o \
 
 NAME =	fillit
 
