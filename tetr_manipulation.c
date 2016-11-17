@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 13:34:48 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/16 17:40:15 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:22:10 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fillit.h"
 #include <stdlib.h>
 
-t_tetr	*tetr_new(int	*array, char c)
+t_tetr	*tetr_new(int *array, char c)
 {
 	t_tetr	*new;
 	int		i;

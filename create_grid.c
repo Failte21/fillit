@@ -6,20 +6,20 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 15:41:20 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/14 07:19:20 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:21:48 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-char *create_grid(int min_rect)
+char	*create_grid(int min_rect)
 {
 	char	*s;
 	int		i;
 
 	i = 1;
-	if(!(s = (char *)malloc(sizeof(char) *
+	if (!(s = (char *)malloc(sizeof(char) *
 		(min_rect * (min_rect + 1) + 1))))
 		return (NULL);
 	while (i < (min_rect) * (min_rect + 1))

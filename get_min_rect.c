@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 14:41:56 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/14 15:10:49 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:17:55 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	get_min_rect(t_tetr *tetr)
 {
-	t_tetr *tmp;
+	t_tetr	*tmp;
 	int		result;
 
 	tmp = tetr;

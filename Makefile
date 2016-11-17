@@ -7,7 +7,6 @@ SRCS =	main.c \
 		create_grid.c \
 		resolve.c \
 		get_min_rect.c \
-		check_tetri.c \
 		libft.a
 
 OBJS =	main.o \
@@ -17,7 +16,6 @@ OBJS =	main.o \
 		create_grid.o \
 		resolve.o \
 		get_min_rect.o \
-		check_tetri.o 
 
 NAME =	fillit
 
