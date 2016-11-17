@@ -6,28 +6,13 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 14:46:17 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/16 17:48:51 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:43:37 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 #include <stdlib.h>
-
-t_tetr	*fill(char *s, char c, t_tetr *new)
-{
-	int		array[4];
-	int		i;
-
-	i = 0;
-	fill_array(array, s, &i, c);
-	if (!(new = insert_node(new, array, c)))
-		return (NULL);
-	if (s[i + 1] == '\n')
-		if (!(fill(&s[i + 2], c + 1, new)))
-			return (NULL);
-	return (new);
-}
 
 void	fill_array(int *array, char *s, int *i, char c)
 {
@@ -50,6 +35,21 @@ void	fill_array(int *array, char *s, int *i, char c)
 			j++;
 		(*i)++;
 	}
+}
+
+t_tetr	*fill(char *s, char c, t_tetr *new)
+{
+	int		array[4];
+	int		i;
+
+	i = 0;
+	fill_array(array, s, &i, c);
+	if (!(new = insert_node(new, array, c)))
+		return (NULL);
+	if (s[i + 1] == '\n')
+		if (!(fill(&s[i + 2], c + 1, new)))
+			return (NULL);
+	return (new);
 }
 
 void	increase_coords(t_tetr *tetr)

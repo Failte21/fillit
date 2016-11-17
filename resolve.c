@@ -6,35 +6,12 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 07:28:52 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/17 08:20:56 by lsimon           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:58:15 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
-
-char	*resolve(char *s, t_tetr *tetr)
-{
-	int	i;
-
-	i = 0;
-	while (ft_strlen(&s[i]) >= (tetr->coord[3] % 100))
-	{
-		if (place_tetr(&s[i], tetr) == 1)
-		{
-			if (tetr->next == NULL)
-				return (s);
-			if (resolve(s, tetr->next) != NULL)
-				return (s);
-			else
-				clean(&s[i], tetr);
-			if (coord_match(tetr->coord, tetr->next->coord) == 1)
-				return (NULL);
-		}
-		i++;
-	}
-	return (NULL);
-}
 
 int		coord_match(int *a1, int *a2)
 {
@@ -79,4 +56,27 @@ void	clean(char *s, t_tetr *tetr)
 		*(s + tetr->coord[i] % 100) = '.';
 		i++;
 	}
+}
+
+char	*resolve(char *s, t_tetr *tetr)
+{
+	int	i;
+
+	i = 0;
+	while (ft_strlen(&s[i]) >= (tetr->coord[3] % 100))
+	{
+		if (place_tetr(&s[i], tetr) == 1)
+		{
+			if (tetr->next == NULL)
+				return (s);
+			if (resolve(s, tetr->next) != NULL)
+				return (s);
+			else
+				clean(&s[i], tetr);
+			if (coord_match(tetr->coord, tetr->next->coord) == 1)
+				return (NULL);
+		}
+		i++;
+	}
+	return (NULL);
 }
