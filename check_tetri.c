@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_tetri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: becorbel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 16:51:54 by becorbel          #+#    #+#             */
-/*   Updated: 2016/11/17 11:04:10 by lsimon           ###   ########.fr       */
+/*   Created: 2016/11/18 08:43:07 by lsimon            #+#    #+#             */
+/*   Updated: 2016/11/18 09:55:33 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_tetri(char *s, int i, int j)
 	{
 		if (s[i] == '#')
 		{
-			if (j > 0)
+			if (j++ > 0)
 			{
 				if (s[i - 5] != '#' && s[i - 1] != '#')
 				{
@@ -72,7 +72,8 @@ int	check_tetri(char *s, int i, int j)
 				else
 					return (check_tetri(s, i + 1, j));
 			}
-			j++;
+			else if (s[i + 1] != '#' && s[i + 5] != '#')
+				return (0);
 		}
 		if (s[i] == '\n' && s[i + 1] == '\n')
 			j = 0;
